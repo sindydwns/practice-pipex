@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 20:46:00 by yonshin           #+#    #+#              #
-#    Updated: 2023/01/05 21:43:20 by yonshin          ###   ########.fr        #
+#    Updated: 2023/01/06 00:03:09 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,4 +37,7 @@ re:
 debug:
 	CFLAGS='-Wall -Wextra' make DEBUG='-g3 -fsanitize=address'
 
-.PHONY : all clean fclean re debug
+test:
+	make debug && ./pipex note.txt cat cat test.txt
+
+.PHONY : all clean fclean re debug test
