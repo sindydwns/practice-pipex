@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonshin <yonshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 20:46:00 by yonshin           #+#    #+#              #
-#    Updated: 2023/01/06 00:03:09 by yonshin          ###   ########.fr        #
+#    Updated: 2023/01/06 13:30:07 by yonshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = pipex
 ifeq ($(CFLAGS),)
 CFLAGS = -Wall -Wextra -Werror
 endif
-OBJS = pipex.o
+OBJS = pipex.o str_split.o
 
 all: $(NAME) 
 
@@ -38,6 +38,7 @@ debug:
 	CFLAGS='-Wall -Wextra' make DEBUG='-g3 -fsanitize=address'
 
 test:
-	make debug && ./pipex note.txt cat cat test.txt
+	make debug
+	./pipex note.txt /bin/cat /bin/cat test.txt
 
 .PHONY : all clean fclean re debug test
