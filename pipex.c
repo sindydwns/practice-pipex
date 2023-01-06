@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:43:33 by yonshin           #+#    #+#             */
-/*   Updated: 2023/01/06 13:41:14 by yonshin          ###   ########.fr       */
+/*   Updated: 2023/01/06 13:46:58 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int main(int argc, char *argv[], char *envp[])
 	
 	if (argc < 4)
 		return (0);
+
+	pipe(pipefd);
 	
 	for (int i = 2; i < argc - 1; i++) {
 		pid = fork();
