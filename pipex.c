@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:43:33 by yonshin           #+#    #+#             */
-/*   Updated: 2023/01/06 13:52:26 by yonshin          ###   ########.fr       */
+/*   Updated: 2023/01/06 17:32:15 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	pipe(pipefd);
 	
+	pid = 0;
 	for (int i = 2; i < argc - 1; i++) {
 		pid = fork();
 		if (pid == 0) {
@@ -52,9 +53,11 @@ int main(int argc, char *argv[], char *envp[])
 		connect(PIPE_READ, STDIN_FILENO);
 		if (i < argc - 2)
 			pipe(pipefd);
-		waitpid(pid, &state, 0);
 	}
-	
+
+	if (pid != 0)
+		waitpid(pid, &state, 0);
+		
 	char c;
 	int fileout = open(FILE2, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (read(STDIN_FILENO, &c, 1))
