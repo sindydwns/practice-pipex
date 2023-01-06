@@ -6,7 +6,7 @@
 /*   By: yonshin <yonshin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 21:43:33 by yonshin           #+#    #+#             */
-/*   Updated: 2023/01/06 13:46:58 by yonshin          ###   ########.fr       */
+/*   Updated: 2023/01/06 13:52:26 by yonshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 #define PIPE_READ pipefd[0]
 #define PIPE_WRITE pipefd[1]
 #define FILE1 argv[1]
-#define CMD1 "/bin/cat"
-#define CMD2 "/bin/cat"
-#define FILE2 argv[4]
+#define FILE2 argv[argc - 1]
 
 char **str_split(char const *s, char c);
 void connect(int fd1, int fd2)
@@ -58,7 +56,7 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	
 	char c;
-	int fileout = open(FILE2, O_WRONLY | O_CREAT, 0644);
+	int fileout = open(FILE2, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (read(STDIN_FILENO, &c, 1))
 		write(fileout, &c, 1);
 	close(fileout);
